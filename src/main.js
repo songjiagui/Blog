@@ -8,7 +8,7 @@ import 'element-plus/dist/index.css'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import "./assets/css/index.scss"
+import './assets/css/index.scss'
 
 const app = createApp(App).use(store).use(router)
 
