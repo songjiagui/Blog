@@ -7,18 +7,31 @@ const routes = [
     component: () => import(/* webpackChunkName: "Home" */ '../views/Home.vue')
   },
   {
-    path: '/:id',
-    name: 'pag',
-    component: () => import(/* webpackChunkName: "Base" */ '../views/Base/Base.vue')
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/:navId',
+    name: 'Pag',
+    component: () => import(/* webpackChunkName: "Pag." */ '../views/Pag/Pag.vue'),
+    meta: {keepAlive: true, parentPath: 'base'},
+    children:[
+      {
+        path: ':id',
+        name: 'Article',
+        component: () => import(/* webpackChunkName: "Article" */ '../views/Article/Article.vue')
+      },
+      {
+        path: '/:navId',
+        name: 'Art',
+        component: () => import(/* webpackChunkName: "Article" */ '../views/Article/Article.vue')
+      },
+    ]
   }
+  // {
+  //   path: '/about',
+  //   name: 'About',
+  //   // route level code-splitting
+  //   // this generates a separate chunk (about.[hash].js) for this route
+  //   // which is lazy-loaded when the route is visited.
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  // }
 ]
 
 const router = createRouter({
