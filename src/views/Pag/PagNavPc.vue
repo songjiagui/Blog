@@ -1,6 +1,6 @@
 <template>
     <el-menu
-   class="nav"
+   class="nav--pc"
    mode="vertical"
    :default-active="id"
    router
@@ -36,7 +36,7 @@ import { get } from '../../assets/requr'
 import { useRoute } from 'vue-router'
 
 export default {
-    name: 'PagNav',
+    name: 'PagNavPc',
     setup () {
     const route = useRoute()
     // const router = useRouter()
@@ -51,13 +51,13 @@ export default {
     }
     nearbyList()
     const id = decodeURI(route.path)
-    return { list, key, id }
+    return { list, key, id}
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.nav{
+.nav--pc{
     width: 2.5rem;
     margin: .1rem .2rem;
     overflow-y: auto;

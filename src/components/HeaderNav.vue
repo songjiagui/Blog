@@ -4,7 +4,9 @@
       <router-link to="/">
         <span class="logo__tag">阿贵的博客</span>
       </router-link>
-      <div class="logo__nav">
+      <div
+      :class="{'logo__nav--mobile':show,'logo__nav--pc':!show}"
+      >
         <el-menu mode="horizontal"
         :default-active="id"
         class="logo__nav__list"
@@ -20,7 +22,7 @@
 </template>
 
 <script>
-
+// import '../assets/css/pc_home.scss'
 export default {
    name: 'HeaderNav',
   props: ['id'],
@@ -47,7 +49,8 @@ export default {
         name: "网络"
       }
     ]
-    return { list }
+    const show = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
+    return { list, show }
   }
   
 }
@@ -73,11 +76,13 @@ export default {
   left: 0;
   right: 0;
   padding: 0 .3rem;
+  overflow-y:hidden;
   border-bottom: #9f9f9f 1px solid;
 
   &__tag {
     display: flex;
     float: left;
+    width: 20%;
     line-height: .5rem;
     font-size: .25rem;
     font-weight: 600;
@@ -87,15 +92,23 @@ export default {
     text-decoration: none;
     color: #000;
   }
-
   &__nav {
-    display: flex;
+    &--mobile {
     height: .5rem;
+    width: 80%;
     flex-wrap: nowrap;
     justify-content: flex-end;
-
+    overflow-y:hidden;
+    overflow-x: auto;
+    }
+    &--pc{
+    display: flex;
+    height: .5rem;
+    width: 80%;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    }
     &__list {
-      margin: .1rem 0 .1rem .2rem;
       font-size: .16rem;
       line-height: .3rem;
     }
@@ -104,10 +117,6 @@ export default {
       border-bottom: none;
     }
   }
-
-  &__item {
-    color: #39a3ff;
-    border-bottom: 2px solid #39a3ff;
-  }
 }
+
 </style>

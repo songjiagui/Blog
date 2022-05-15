@@ -24,7 +24,6 @@ const routes = [
       },
     ]
   }
-  // {
   //   path: '/about',
   //   name: 'About',
   //   // route level code-splitting

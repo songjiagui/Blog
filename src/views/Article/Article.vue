@@ -50,7 +50,6 @@ export default {
             } else {
                 url = route.path
             }
-            console.log(url)
             const result = await get(url)
             if (result?.data) {
                 if (result?.data){
@@ -72,14 +71,9 @@ export default {
 @import '@/assets/css/index.scss';
 
 .content {
-    position: absolute;
-    margin: .1rem 1rem;
-    float: right;
-    left: 3rem;
-    right: .3rem;
+    margin: 0.1rem 0.3rem;
     min-height: 2rem;
     overflow: hidden;
-
     &__header {
         display: block;
         font-size: .4rem;
@@ -91,6 +85,7 @@ export default {
         margin: .2rem 0;
         font-size: .21rem;
         font-weight: 700;
+        word-break: break-all;
     }
 
     &__text {
@@ -121,26 +116,17 @@ export default {
     }
 
     &__jump {
-        display: block;
+        display: flex;
         line-height: 0.5rem;
         border-top: 1px $border-gray solid;
         width: 100%;
         margin: .5rem 0 1rem 0;
+        justify-content: space-between;
         font-size: .16rem;
 
         a {
             color: $element-blue;
             text-decoration: none;
-        }
-
-        &__back {
-            left: 0;
-            position: absolute;
-        }
-
-        &__next {
-            right: 0;
-            position: absolute;
         }
     }
 }
